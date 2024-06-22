@@ -1,3 +1,4 @@
+/* Starter Code */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -13,4 +14,26 @@ body {
 
 .task-card:hover {
   cursor: grab;
+}
+
+
+/* Dark mode */
+:root {
+  --bs-dark-bg: #343a40;
+  --bs-dark-color: #ffffff;
+}
+
+.body-dark {
+  background-color: var(--bs-dark-bg);
+  color: var(--bs-dark-color);
+}
+
+.dark-mode {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.dark-mode .modal-content {
+  background-color: #454d55;
+  color: #ffffff;
 }

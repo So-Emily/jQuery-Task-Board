@@ -2,6 +2,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  background: #696869eb;
 }
 
 .swim-lanes {
@@ -44,12 +45,14 @@ body {
 /* Styling the Task Cards */
 .card-title {
   background: #4e0174;
-  color: #f8f4f4;
+  color: #f1f0f0;
   padding: 10px;
+  margin: 0;
 }
 
-
-
+.card-header {
+  background: #4e0174;
+}
 /* Customizes the whole scrollbar */
 ::-webkit-scrollbar {
   width: 12px; /* Adjust the width of the scrollbar */

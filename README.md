@@ -12,13 +12,15 @@ This web application allows the user to  organize takssks via, to-do, in progres
 - [License](#license)
 - [Questions](#questions)
 
-## Installation
-This is a website application live on GitHub pages. The live link: https://so-emily.github.io/jQuery-Task-Board/
+## Deploying
+This is a website application live on GitHub pages. 
+
+The live link: https://so-emily.github.io/jQuery-Task-Board/
 
 ## Usage
 Used through the live web link or launched through your code software.
 
-## Contribution
+## Contributions
 This project uses contributions from JQuery and Bootstrap.
 
 ## Tests

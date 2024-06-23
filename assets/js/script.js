@@ -17,8 +17,7 @@ function createTaskCard(task) {
                 <p class="card-text">${task.dueDate}</p>
                 <button class="btn btn-danger delete-task" data-task-id="${task.id}">Delete</button>
             </div>
-        </div>
-    `;
+        </div>`;
     return card;
 }
 
@@ -40,15 +39,28 @@ function renderTaskList() {
     });
 
     $(".card").draggable({
-        revert: "invalid",
-        cursor: "move",
-        helper: "clone",
-    });
+    // Ensures the card can only be dropped in a droppable area
+    revert: "invalid",
+    cursor: "move",
+    helper: "clone",
+    // Makes the card slightly transparent to differentiate from the original
+    opacity: 0.7,
+    // Ensures the card is returned to its original position if not dropped in a droppable area
+    zIndex: 100
+});
 
-    $(".lane").droppable({
-        accept: ".card",
-        drop: handleDrop,
-    });
+$(".lane").droppable({
+    accept: ".card",
+    drop: handleDrop,
+    over: function(event, ui) {
+        // highlight the lane when a card is dragged over it
+        $(this).addClass('lane-highlight');
+    },
+    out: function(event, ui) {
+        // remove the highlight when a card is dragged out
+        $(this).removeClass('lane-highlight');
+    }
+});
 
     $(".delete-task").click(handleDeleteTask);
 }

@@ -17,6 +17,11 @@ body {
   cursor: grab;
 }
 
+.task-card:active {
+  cursor: grabbing;
+}
+
+
 /* Styling Main Title and Description underneath */
 #title, #description {
   color: #f8f4f4;
@@ -32,17 +37,36 @@ body {
   font-size: 1.1rem;
 }
 
-/* Styling the Add Task Button */
-.btn-dark {
-  padding: 5px;
+/* Styling the Main Add Task Button */
+.main-t-button {
+  background: #4e0174;
+  color: #f1f0f0;
+  border-color: white;
+  margin-top: -10px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-top: -10px;
-  background: #4e0174;
-  font-weight: 500
 }
 
-/* Styling the Task Cards */
+.main-t-button:hover {
+  background: #35014f;
+  color: white;
+  border-color: white;
+}
+
+/* Styling the Add Task Modal */
+.add-t-button {
+  background: #4e0174;
+  color: #f1f0f0;
+  border-color: white;
+}
+
+.add-t-button:hover {
+  background: #35014f;
+  border-color: white;
+}
+
+/* Styling the three task lanes */
+/* LANES NOT CARDS */
 .card-title {
   background: #4e0174;
   color: #f1f0f0;
@@ -53,6 +77,47 @@ body {
 .card-header {
   background: #4e0174;
 }
+
+
+/* Styling the task cards */
+/* Task Card Background Styling */
+.card-title-sml {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-body {
+  background: #bfbebe;
+  padding: 10px;
+}
+
+.card-text {
+  font-size: larger;
+}
+
+.card-text-due {
+  font-size: medium;
+  margin-bottom: 2px;
+}
+
+/* Styling the task cards depending on the due date */
+.past-due {
+  background-color: red;
+  padding: 5px;
+}
+
+.due-today {
+  background-color: rgb(227, 146, 16);
+  padding: 5px;
+}
+
+
+.future {
+  background-color: #4e0174;
+  padding: 5px;
+
+}
+
 /* Customizes the whole scrollbar */
 ::-webkit-scrollbar {
   width: 12px; /* Adjust the width of the scrollbar */

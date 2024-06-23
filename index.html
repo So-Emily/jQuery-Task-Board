@@ -16,81 +16,86 @@
   <title>Task Board</title>
 </head>
 
-<body class="body-dark dark-mode"></body>
-  <header class="p-4 mb-4 text-center border-bottom border-5">
-    <h1 class="display-3">Task Board</h1>
-    <p class="lead">A simple Kanban board for task management</p>
+<body>
+  <header class="p-4 mb-4 bg-dark text-center border-bottom border-5">
+    <h1 class="display-3" id="title">Task Board</h1>
+    <p class="lead" id="description">A simple Kanban board for task management</p>
   </header>
-  <div class="container body-dark dark-mode">
+
+  <div class="container">
     <div class="text-center mb-5">
-      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
+      <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
+
     <!-- Todo: Create a modal with a form to add tasks -->
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="formModalLabel">Add Task</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="task-form">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-light"> 
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModalLabel">Add Task</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> 
+        </div>
+        <div class="modal-body">
+          <form id="task-form">
+            <div class="mb-3">
+              <label for="task-name" class="form-label">Task Name</label>
+              <input type="text" class="form-control bg-secondary text-light" id="task-name" name="task-name" required /> 
+            </div>
+            <div class="mb-3">
+              <label for="task-description" class="form-label">Task Description</label>
+              <textarea class="form-control bg-secondary text-light" id="task-description" name="task-description" rows="3" required></textarea>
+            </div>
               <div class="mb-3">
-                <label for="task-name" class="form-label">Task Name</label>
-                <input type="text" class="form-control" id="task-name" name="task-name" required />
+                <label for="task-due-date" class="form-label">Due Date</label>
               </div>
-              <div class="mb-3">
-                <label for="task-description" class="form-label">Task Description</label>
-                <textarea class="form-control" id="task-description" name="task-description" required></textarea>
+              <input type="date" class="form-control" id="task-due-date" name="task-due-date" required />
               </div>
-              <div class="mb-3">
-                <label for="task-due-date" class="form-label
-                ">Due Date</label>
-                <input type="date" class="form-control" id="task-due-date" name="task-due-date" required />
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add Task</button>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" form="task-form">Add Task</button>
-          </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 
-    <div class="row swim-lanes text-center justify-content-between body-dark dark-mode">
-      <div class="col-12 col-lg-4 d-flex">
-        <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
-          <div class="card-header bg-dark">
-            <h2 class="card-title mb-1">To Do</h2>
-          </div>
-          <div class="card-body bg-dark">
-            <!-- the id for the cards in the list -->
-            <div id="todo-cards"></div>
-          </div>
+  <!-- Starter Code -->
+  <div class="row swim-lanes text-center justify-content-between task-container">
+
+    <div class="col-12 col-lg-4 d-flex task-card">
+      <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
+        <div class="card-header bg-white">
+          <h2 class="card-title mb-1">To Do</h2>
+        </div>
+        <div class="card-body bg-dark">
+          <div id="todo-cards"></div>
+        </div>
+      </div> 
+    </div>
+
+    <div class="col-12 col-lg-4 d-flex task-card">
+      <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
+        <div class="card-header bg-white">
+          <h2 class="card-title mb-1">In Progress</h2>
+        </div>
+        <div class="card-body bg-dark">
+          <div id="in-progress-cards"></div>
         </div>
       </div>
-      <div class="col-12 col-lg-4 d-flex">
-        <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
-          <div class="card-header bg-dark">
-            <h2 class="card-title mb-1">In Progress</h2>
+    </div>
+
+      <div class="col-12 col-lg-4 d-flex task-card">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Done</h2>
           </div>
-          <div class="card-body bg-dark">
-            <div id="in-progress-cards"></div>
-          </div>
+        <div class="card-body bg-dark">
+            <div id="done-cards"></div>
         </div>
-        </div>
-        <div class="col-12 col-lg-4 d-flex ">
-          <div id="done" class="card border-light mb-3 lane flex-grow-1">
-            <div class="card-header bg-dark">
-              <h2 class="card-title mb-1">Done</h2>
-            </div>
-            <div class="card-body bg-dark">
-              <div id="done-cards"></div>
-          </div>
-          </div>
       </div>
+
     </div>
   </div>
 
@@ -101,12 +106,8 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-  <!-- Include jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Include jQuery UI -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
   <script src="./assets/js/script.js"></script>
-</body>
 
+</body>
 </html>

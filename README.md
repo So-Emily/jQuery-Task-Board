@@ -4,6 +4,8 @@
 ## Description
 This web application allows the user to  organize takssks via, to-do, in progress and done. It transforms a form with tile, description and due date into task cardst that can be moved around.
 
+![task-website-img-sml](https://github.com/So-Emily/jQuery-Task-Board/assets/10500315/2d27e2ee-f061-4995-8a0c-67d26091dff6)
+
 ## Table of Contents
 - [Deploying](#deploying)
 - [Usage](#usage)

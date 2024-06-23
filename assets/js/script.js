@@ -9,17 +9,33 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    const dueDateStatus = getDueDateStatus(task.dueDate);
     const card = `
         <div class="card mb-3" id="task-${task.id}">
             <div class="card-body">
-                <h5 class="card-title">${task.name}</h5>
+                <h5 class="card-title-sml ${dueDateStatus}">${task.name}</h5>
                 <p class="card-text">${task.description}</p>
+                <p class="card-text-due">Due Date:</p>
                 <p class="card-text">${task.dueDate}</p>
                 <button class="btn btn-danger delete-task" data-task-id="${task.id}">Delete</button>
             </div>
-        </div>
-    `;
+        </div>`;
     return card;
+}
+
+// function to get the due date status, to change colors of the cards
+function getDueDateStatus(dueDate) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize today to midnight for accurate comparison
+    const taskDueDate = new Date(dueDate + "T00:00:00");
+
+    if (taskDueDate < today) {
+        return 'past-due';
+    } else if (taskDueDate.toDateString() === today.toDateString()) {
+        return 'due-today';
+    } else {
+        return 'future';
+    }
 }
 
 // Todo: create a function to render the task list and make cards draggable
@@ -28,6 +44,7 @@ function renderTaskList() {
     $("#in-progress-cards").empty();
     $("#done-cards").empty();
 
+    // Loop through the task list and create a card for each task
     taskList.forEach((task) => {
         const card = createTaskCard(task);
         if (task.status === "todo") {
@@ -40,17 +57,30 @@ function renderTaskList() {
     });
 
     $(".card").draggable({
-        revert: "invalid",
-        cursor: "move",
-        helper: "clone",
+    // Ensures the card can only be dropped in a droppable area
+    revert: "invalid",
+    cursor: "move",
+    helper: "clone",
+    // Makes the card slightly transparent to differentiate from the original
+    opacity: 0.7,
+    // Ensures the card is returned to its original position if not dropped in a droppable area
+    zIndex: 100
     });
 
     $(".lane").droppable({
         accept: ".card",
         drop: handleDrop,
+        over: function(event, ui) {
+            // highlight the lane when a card is dragged over it
+            $(this).addClass('lane-highlight');
+        },
+        out: function(event, ui) {
+            // remove the highlight when a card is dragged out
+            $(this).removeClass('lane-highlight');
+        }
     });
 
-    $(".delete-task").click(handleDeleteTask);
+        $(".delete-task").click(handleDeleteTask);
 }
 
 // Todo: create a function to handle adding a new task

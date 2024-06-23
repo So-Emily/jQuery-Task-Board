@@ -16,24 +16,58 @@ body {
   cursor: grab;
 }
 
-
-/* Dark mode */
-:root {
-  --bs-dark-bg: #343a40;
-  --bs-dark-color: #ffffff;
+/* Styling Main Title and Description underneath */
+#title, #description {
+  color: #f8f4f4;
 }
 
-.body-dark {
-  background-color: var(--bs-dark-bg);
-  color: var(--bs-dark-color);
+#title {
+  text-decoration: underline;
+  font-size: 3.5rem;
 }
 
-.dark-mode {
-  background-color: #343a40;
-  color: #ffffff;
+#description {
+  /* padding-top: 20px; */
+  font-size: 1.1rem;
 }
 
-.dark-mode .modal-content {
-  background-color: #454d55;
-  color: #ffffff;
+/* Styling the Add Task Button */
+.btn-dark {
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: -10px;
+  background: #4e0174;
+  font-weight: 500
 }
+
+/* Styling the Task Cards */
+.card-title {
+  background: #4e0174;
+  color: #f8f4f4;
+  padding: 10px;
+}
+
+
+
+/* Customizes the whole scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Adjust the width of the scrollbar */
+}
+
+/* Customizes the track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #2c2f33; /* Change to match your design */
+}
+
+/* Customizes the thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #333233; 
+  /* border-radius: 6px;  */
+  border: 3px solid #2c2f33; /* Same as track color to create a "margin" effect */
+}
+
+
+
+
+
